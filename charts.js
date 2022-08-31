@@ -80,7 +80,7 @@ function buildCharts(sample) {
 
   var yticks = ids.map(sampleObj => "OTU " + sampleObj).slice(0,10).reverse();
     
-    console.log(yticks)
+    console.log(yticks);
     
     // 8. Create the trace for the bar chart. 
     var barData = [{
@@ -94,7 +94,22 @@ function buildCharts(sample) {
     // 9. Create the layout for the bar chart. 
     var barLayout = {
      title: "Top 10 Bacteria Cultures Found"
-    };
+    yaxis: {
+      tickmode: "array",
+      tickvals: [0,1,2,3,4,5,6,7,8,9],
+      ticktext: yticks
+    },
+    annotations: [{
+      xref: 'paper',
+      yref: 'paper',
+      x: 0.5,
+      xanchor: 'center',
+      y: -0.25,
+      yanchor: 'center',
+      text: 'The bar chart displays the top 10 bacterial species (OTUs)<br>with the number of samples found in your belly button',
+      showarrow: false
+    }]
+  };
     
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
@@ -133,14 +148,14 @@ function buildCharts(sample) {
         hovermode: "closest"
     };
 
+    console.log(bubblelayout);
+
     // 3. Use Plotly to plot the data with the layout.
-    Plotly.newPlot(("bubble", bubbleData, bubbleLayout); 
-  });
-}
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
 // Deliverable 3 Gauge Chart
 // Create the buildChart function.
-function buildCharts(sample) {
+  function buildCharts(sample) {
   // Use d3.json to load the samples.json file 
   d3.json("samples.json").then((data) => {
     console.log(data);
@@ -200,6 +215,6 @@ function buildCharts(sample) {
     };
 
     // 6. Use Plotly to plot the gauge data and layout.
-    Plotly.newPlot("gauge", gaugeData, gaugeLayout));
-  });
+    Plotly.newPlot("gauge", gaugeData, gaugeLayout)
+  };
 }

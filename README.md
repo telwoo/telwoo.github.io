@@ -1,2 +1,2 @@
 # telwoo.github.io
-Plotly -Module 12 belly Button Biodiversity
+Plotly -Module 12 Belly Button Biodiversity
